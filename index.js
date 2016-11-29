@@ -28,7 +28,7 @@ window.onload = function () {
     print: function () {
       for(i = 0; i < this.history.length; i++) {
         console.log("date     || credit || debit  || balance");
-        console.log(this.history[i].date.padEnd(10) + "|| " + this.history[i].credit.padEnd(8) + "|| " + this.history[i].debit.padEnd(8) + "||" + this.history[i].balance);
+        console.log(this.history[i].date + "|| " + this.history[i].credit + "|| " + this.history[i].debit + "||" + this.history[i].balance);
       }
     },
 
@@ -44,6 +44,7 @@ window.onload = function () {
       } else {
         tempEntry.credit = amount.toString();
       }
+      this.history.push(tempEntry);
     }
   };
 };
