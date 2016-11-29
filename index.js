@@ -26,7 +26,7 @@ window.onload = function () {
   AccountStatement.prototype = {
 
     print: function () {
-      console.log("date       || credit || debit  || balance");
+      console.log("date       ||   credit  ||   debit   || balance");
       for(i = 0; i < this.history.length; i++) {
         console.log(this.history[i].time + "|| " + this.history[i].credit + "|| " + this.history[i].debit + "|| " + this.history[i].balance);
       }
@@ -34,7 +34,6 @@ window.onload = function () {
 
     storeNewEntry: function (time, amount, type, bal) {
       var tempEntry = {};
-      console.log(this.formatCredit(type, 2000, 10));
       tempEntry.time = this.formatTime(time, 11);
       tempEntry.credit = this.formatCredit(type, amount, 10);
       tempEntry.debit = this.formatDebit(type, amount, 10);
@@ -49,20 +48,21 @@ window.onload = function () {
     },
 
     formatCredit: function (type, amount, len) {
-      var repeatAmount = len - amount.length;
+      var repeatAmount = (len - amount.toString().length);
       if(type === "credit") {
-        return (amount.toString() + "x".repeat(repeatAmount));
+        return (amount + " ".repeat(repeatAmount));
       } else {
         return (" ".repeat(len));
       }
     },
 
     formatDebit: function (type, amount, len) {
-      var repeatAmount = len - amount.length;
+      var repeatAmount = (len - amount.toString().length);
+      console.log(type);
       if(type === "debit") {
-        return (amount.toString() + " ".repeat(repeatAmount));
+        return (amount + " ".repeat(repeatAmount));
       } else {
-        return (" " * len);
+        return (" ".repeat(len));
       }
     }
   };
